@@ -1,5 +1,6 @@
 package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
