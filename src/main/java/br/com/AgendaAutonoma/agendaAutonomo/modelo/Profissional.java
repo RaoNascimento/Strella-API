@@ -2,12 +2,14 @@ package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +33,9 @@ public class Profissional implements Serializable  {
 	private String cargo;
 	@Column(name = "nomeComercial")
 	private String nomeComercial;
+	@ManyToMany(mappedBy = "servicosOferecidos") 
+	private List<ServicoOferecido>servicosOferecidos;
+	
 	/*
 	@OneToOne
 	@JoinColumn(name = "codigoUsuario", referencedColumnName = "id")
