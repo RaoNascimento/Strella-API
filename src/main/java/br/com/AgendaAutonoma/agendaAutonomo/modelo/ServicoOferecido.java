@@ -1,23 +1,17 @@
 package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.Generated;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import org.springframework.data.annotation.Id;
 
+@Entity
 @Table(name="servicoOferecido")
-public class ServicoOferecido {
+public class ServicoOferecido implements Serializable {
 	
-	 @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "id")
 	private Long id;
 	 @Column(name = "tempoAtendimentoMin")
@@ -27,11 +21,97 @@ public class ServicoOferecido {
 	 @Column(name = "preco")
 	private String preco;
 	 
-	 @ManyToMany
-	 @JoinTable(name="profissional_servico",
-	 joinColumns = @JoinColumn(name = "codServicoOferecido"), 
-	 inverseJoinColumns = @JoinColumn(name = "codProfissional")) 	
-	private List<Profissional> Profissionais;
+	 @ManyToMany(mappedBy = "servicosOferecidos") 	
+	private List<Profissional> profissionais;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getTempoAtendimentoMin() {
+		return tempoAtendimentoMin;
+	}
+
+	public void setTempoAtendimentoMin(int tempoAtendimentoMin) {
+		this.tempoAtendimentoMin = tempoAtendimentoMin;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getPreco() {
+		return preco;
+	}
+
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+
 	
+	
+	public List<Profissional> getProfissionais() {
+		return profissionais;
+	}
+
+	public void setProfissionais(List<Profissional> profissionais) {
+		this.profissionais = profissionais;
+	}
+
+	@Override
+
+	public int hashCode() {
+
+	final int prime = 31;
+
+	int result = 1;
+
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+
+	return result;
+
+	}
+
+	@Override
+
+	public boolean equals(Object obj) {
+
+	if (this == obj)
+
+	return true;
+
+	if (obj == null)
+
+	return false;
+
+	if (getClass() != obj.getClass())
+
+
+	return false;
+
+	final ServicoOferecido other = (ServicoOferecido) obj;
+
+	if (id == null) {
+
+	if (other.id != null)
+
+	return false;
+
+	} else if (!id.equals(other.id))
+
+	return false;
+
+	return true;
+
+	}
+
 
 }

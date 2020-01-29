@@ -9,7 +9,7 @@ import br.com.AgendaAutonoma.agendaAutonomo.modelo.Cliente;
 import br.com.AgendaAutonoma.agendaAutonomo.repository.ClienteRepository;
 import br.com.AgendaAutonoma.agendaAutonomo.service.ClienteService;
 @Service
-public class ClienteServiceImp implements ClienteService {
+public class ClienteServiceImpl implements ClienteService {
 
 	@Autowired
 	ClienteService clienteService;

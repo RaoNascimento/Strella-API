@@ -1,17 +1,9 @@
 package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
-
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 @Entity
 @Table(name="Profissional")
 public class Profissional implements Serializable  {
@@ -33,7 +25,11 @@ public class Profissional implements Serializable  {
 	private String cargo;
 	@Column(name = "nomeComercial")
 	private String nomeComercial;
-	@ManyToMany(mappedBy = "servicosOferecidos") 
+	
+	 @ManyToMany
+	 @JoinTable(name="profissional_servico",
+	 joinColumns = { @JoinColumn(name = "profissional_id")}, 
+	 inverseJoinColumns = {@JoinColumn(name = "servicoOferecido_id")})  
 	private List<ServicoOferecido>servicosOferecidos;
 	
 	/*
@@ -54,6 +50,14 @@ public class Profissional implements Serializable  {
 		return id;
 	}
 	
+	public List<ServicoOferecido> getServicosOferecidos() {
+		return servicosOferecidos;
+	}
+
+	public void setServicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
+		this.servicosOferecidos = servicosOferecidos;
+	}
+
 	public String getNome() {
 		return nome;
 	}
