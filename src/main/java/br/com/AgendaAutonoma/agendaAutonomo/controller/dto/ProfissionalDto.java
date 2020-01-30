@@ -3,6 +3,8 @@ package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Profissional;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
 import lombok.AllArgsConstructor;
@@ -81,8 +83,8 @@ public class ProfissionalDto {
 	}
 
 
-	public static List<ProfissionalDto> converter(List<Profissional> profissionais) { //Passo a lista de tópico e me retorna tópicos dto conversao
-		return profissionais.stream().map(ProfissionalDto::new).collect(Collectors.toList());
+	public static Page<ProfissionalDto> converter(Page<Profissional> profissionais) { //Passo a lista de tópico e me retorna tópicos dto conversao
+		return profissionais.map(ProfissionalDto::new);
 		
 		// topicos com stream java 8 recebe topicos da classe Topico e retorna o dto
 		//o map faz a busca de cada atributo, o Topico::new instanciando (Chama o construtor) os objetos do Dto

@@ -3,6 +3,8 @@ package br.com.AgendaAutonoma.agendaAutonomo.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.AgendaAutonoma.agendaAutonomo.controller.form.AtualizaProfissionaisForm;
@@ -49,13 +51,13 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 		return profissional;
 	}
 	
-	public List<Profissional>listarProfissional(String nome){
+	public Page<Profissional>listarProfissional(String nome, Pageable paginacao){
 		
 		if (nome == null) {		
-			List<Profissional> profissionais = profissionalRepository.findAll();
+			Page<Profissional> profissionais = profissionalRepository.findAll(paginacao);
 			return profissionais;
 		} else {			
-			List<Profissional> profissionais = profissionalRepository.findByNome(nome);
+			Page<Profissional> profissionais = profissionalRepository.findByNome(nome, paginacao);
 			return profissionais;	
 	}
 

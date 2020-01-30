@@ -2,6 +2,9 @@ package br.com.AgendaAutonoma.agendaAutonomo.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import br.com.AgendaAutonoma.agendaAutonomo.controller.form.AtualizaProfissionaisForm;
 import br.com.AgendaAutonoma.agendaAutonomo.controller.form.ProfissionaisForm;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Profissional;
@@ -12,6 +15,6 @@ public interface ProfissionalService {
 
 	Profissional atualizarProfissional(Long id, AtualizaProfissionaisForm form);
 
-	List<Profissional> listarProfissional(String nome);
+	Page<Profissional> listarProfissional(String nome, Pageable paginacao);
 
 }
