@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Profissional;
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
 import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProfissionalDto {
@@ -16,6 +17,7 @@ public class ProfissionalDto {
 	private String nomeComercial;
 	//private Usuario usuario = new Usuario();
 	private String numeroConselho;
+	private List<ServicoOferecido>servicosOferecidos;
 	
 	
 	public ProfissionalDto(Profissional profissional) { //construtor - Eu passo as informações ele preenche e retorna ainfo deste Dto
@@ -26,7 +28,7 @@ public class ProfissionalDto {
 		this.email = profissional.getEmail();
 		this.numeroConselho = profissional.getNumeroConselho();
 		this.nomeComercial = profissional.getNomeComercial();
-		//this.usuario = profissional.getUsuario();
+		this.servicosOferecidos = profissional.getServicosOferecidos();
 		
 	}
 
@@ -104,6 +106,16 @@ public class ProfissionalDto {
 
 	public void setNomeComercial(String nomeGrupoComercial) {
 		this.nomeComercial = nomeGrupoComercial;
+	}
+
+
+	public List<ServicoOferecido> getServicosOferecidos() {
+		return servicosOferecidos;
+	}
+
+
+	public void setServicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
+		this.servicosOferecidos = servicosOferecidos;
 	}
 
 	

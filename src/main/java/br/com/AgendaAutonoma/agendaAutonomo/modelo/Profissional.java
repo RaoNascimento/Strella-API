@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Entity
 @Table(name="Profissional")
 public class Profissional implements Serializable  {
@@ -26,7 +30,7 @@ public class Profissional implements Serializable  {
 	@Column(name = "nomeComercial")
 	private String nomeComercial;
 	
-	 @ManyToMany
+	 @ManyToMany(cascade = CascadeType.ALL)
 	 @JoinTable(name="profissional_servico",
 	 joinColumns = { @JoinColumn(name = "profissional_id")}, 
 	 inverseJoinColumns = {@JoinColumn(name = "servicoOferecido_id")})  

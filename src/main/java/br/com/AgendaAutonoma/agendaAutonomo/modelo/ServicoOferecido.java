@@ -5,7 +5,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+property = "id")
 @Entity
 @Table(name="servicoOferecido")
 public class ServicoOferecido implements Serializable {
@@ -21,8 +24,8 @@ public class ServicoOferecido implements Serializable {
 	 @Column(name = "preco")
 	private String preco;
 	 
-	 @ManyToMany(mappedBy = "servicosOferecidos") 	
-	private List<Profissional> profissionais;
+	 //@OneToMany(mappedBy = "servicosOferecidos", fetch = FetchType.EAGER) 
+	
 
 	public Long getId() {
 		return id;
@@ -57,14 +60,6 @@ public class ServicoOferecido implements Serializable {
 	}
 
 	
-	
-	public List<Profissional> getProfissionais() {
-		return profissionais;
-	}
-
-	public void setProfissionais(List<Profissional> profissionais) {
-		this.profissionais = profissionais;
-	}
 
 	@Override
 
