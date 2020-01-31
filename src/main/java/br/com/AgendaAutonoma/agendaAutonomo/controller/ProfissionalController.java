@@ -47,7 +47,7 @@ public class ProfissionalController {
 	@GetMapping
 	//@Cacheable(value="listaProfissionais")
 	public Page<ProfissionalDto> lista(@RequestParam(required = false) String nome, 
-		@PageableDefault(sort="nome", direction = Direction.ASC, page = 0, size = 10) Pageable paginacao) {		
+		@PageableDefault(sort="nome", direction = Direction.ASC, page = 0, size = 30) Pageable paginacao) {		
 		
 		//Pageable paginacao = PageRequest.of(pagina, qtd, Direction.ASC, ordenacao); 
 		Page<Profissional> profissionais = service.listarProfissional(nome, paginacao);

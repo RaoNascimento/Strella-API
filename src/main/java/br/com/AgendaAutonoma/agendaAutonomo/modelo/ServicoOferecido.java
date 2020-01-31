@@ -7,8 +7,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Entity
 @Table(name="servicoOferecido")
 public class ServicoOferecido implements Serializable {
@@ -24,9 +23,7 @@ public class ServicoOferecido implements Serializable {
 	 @Column(name = "preco")
 	private String preco;
 	 
-	 //@OneToMany(mappedBy = "servicosOferecidos", fetch = FetchType.EAGER) 
 	
-
 	public Long getId() {
 		return id;
 	}

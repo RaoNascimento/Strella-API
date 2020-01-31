@@ -1,6 +1,9 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller.form;
 
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.Usuario;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
 
 public class AtualizaProfissionaisForm {
 	
@@ -10,7 +13,7 @@ public class AtualizaProfissionaisForm {
 	private String numeroConselho;
 	private String cargo;
 	private String nomeComercial;
-	private Usuario usuario = new Usuario();
+	private List<ServicoOferecido>servicos = new ArrayList<>();
 	
 	public String getNome() {
 		return nome;
@@ -68,30 +71,16 @@ public class AtualizaProfissionaisForm {
 	public void setNomeComercial(String nomeGrupoComercial) {
 		this.nomeComercial = nomeGrupoComercial;
 	}
-	/*
-	public Profissional atualizar(Long id, ProfissionalRepository profissionalRepository) {
-		Profissional profissional = profissionalRepository.getOne(id);
-		profissional.setNome(this.nome);
-		profissional.setCargo(this.cargo);
-		profissional.setEmail(this.email);
-		profissional.setTelefone(this.telefone);
-		profissional.setNomeComercial(this.nomeComercial);
-		profissional.setNumeroConselho(this.numeroConselho);
-		//profissional.setUsuario(this.usuario);
-		
-		return  profissional;
-		
-	}
-*/
+	
 
-	public Usuario getUsuario() {
-		return usuario;
+	public List<ServicoOferecido> getServicos() {
+		return servicos;
 	}
 
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setServicos(List<ServicoOferecido> servicos) {
+		this.servicos = servicos;
 	}
-
+	
 
 }

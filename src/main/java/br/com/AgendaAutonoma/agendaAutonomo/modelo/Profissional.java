@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Entity
 @Table(name="Profissional")
 public class Profissional implements Serializable  {
@@ -36,20 +36,6 @@ public class Profissional implements Serializable  {
 	 inverseJoinColumns = {@JoinColumn(name = "servicoOferecido_id")})  
 	private List<ServicoOferecido>servicosOferecidos;
 	
-	/*
-	@OneToOne
-	@JoinColumn(name = "codigoUsuario", referencedColumnName = "id")
-	private Usuario usuario;
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-*/
 	public Long getId() {
 		return id;
 	}
@@ -109,13 +95,8 @@ public class Profissional implements Serializable  {
 	public void setNomeComercial(String nomeComercial) {
 		this.nomeComercial = nomeComercial;
 	}
-	/*
-	public Profissional (String nome) {
-		this.nome = nome;
-	}
-	*/
-
 	
+
 	@Override
 
 	public int hashCode() {

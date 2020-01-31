@@ -1,7 +1,5 @@
 package br.com.AgendaAutonoma.agendaAutonomo.serviceImpl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +19,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
-	Profissional profissional;
+	Profissional profissional = new Profissional();
 	
 	public Profissional salvarProfissional(ProfissionaisForm form) {
 		
@@ -31,23 +29,24 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 		profissional.setNumeroConselho(form.getNumeroConselho());
 		profissional.setTelefone(form.getTelefone());
 		profissional.setNomeComercial(form.getNomeComercial());
-		// profissional.setUsuario(form.getUsuario());
 		profissional = profissionalRepository.save(profissional);
 		
 		return profissional;
 	}
 	
 	public Profissional atualizarProfissional(Long id,  AtualizaProfissionaisForm form) {
-				
-			profissional = profissionalRepository.getOne(id);
+		
+		Profissional profissional = profissionalRepository.getOne(id);
+		
+		
 			profissional.setNome(form.getNome());
 			profissional.setCargo(form.getCargo());
 			profissional.setEmail(form.getEmail());
 			profissional.setTelefone(form.getTelefone());
 			profissional.setNomeComercial(form.getNomeComercial());
 			profissional.setNumeroConselho(form.getNumeroConselho());
-			//profissional.setUsuario(this.usuario);
-					
+			profissional.setServicosOferecidos(form.getServicos());
+				
 		return profissional;
 	}
 	

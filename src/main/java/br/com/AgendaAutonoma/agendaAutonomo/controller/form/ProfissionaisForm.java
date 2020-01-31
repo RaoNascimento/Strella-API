@@ -71,15 +71,5 @@ public class ProfissionaisForm {
 		this.numeroConselho = numeroConselho;
 	}
 
-
-
-
-/*
-	public Profissional transformaParaDto() {
-		return new Profissional(nome,telefone,email,numConselho,cargo);
-	}
-*/
-	
-
 	
 }
