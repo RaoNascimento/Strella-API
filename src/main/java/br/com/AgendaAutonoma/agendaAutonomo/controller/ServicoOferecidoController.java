@@ -3,6 +3,7 @@ package br.com.AgendaAutonoma.agendaAutonomo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class ServicoOferecidoController {
 	ServicoOferecidoRepository servicoOferecidoRepository; 
 	
 	@GetMapping
+	@Cacheable(value="servicosOferecidos")
 	public List<ServicoOferecidoDto> lista(String nome) {
 		
 		List<ServicoOferecido> servicosOferecidos = service.listarServicosOferecidos(nome);
