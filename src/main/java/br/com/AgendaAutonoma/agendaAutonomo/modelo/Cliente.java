@@ -1,5 +1,6 @@
 package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -13,8 +14,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Cliente")
-public class Cliente {
+public class Cliente  implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;

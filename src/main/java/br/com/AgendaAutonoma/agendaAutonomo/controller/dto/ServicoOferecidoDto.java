@@ -1,5 +1,6 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,11 +10,15 @@ import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
 public class ServicoOferecidoDto {
 	
 	private Long id;
-	private int tempoAtendimentoMin;
 	private String nome;
-	private String preco;
+	private String usuUltAlteracao;
+	private LocalDate dataUltAlteracao;
 	
 	
+	public LocalDate getDataUltAlteracao() {
+		return dataUltAlteracao;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -22,13 +27,7 @@ public class ServicoOferecidoDto {
 		this.id = id;
 	}
 
-	public void setTempoAtendimentoMin(int tempoAtendimentoMin) {
-		this.tempoAtendimentoMin = tempoAtendimentoMin;
-	}
-	public int getTempoAtendimentoMin() {
-		return tempoAtendimentoMin;
-	}
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -36,21 +35,14 @@ public class ServicoOferecidoDto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getPreco() {
-		return preco;
-	}
-
-	public void setPreco(String preco) {
-		this.preco = preco;
-	}
-
-	 
+ 
 	public ServicoOferecidoDto(ServicoOferecido servicoOferecido ) {
 		this.id 					= servicoOferecido.getId();
-		this.tempoAtendimentoMin 	= servicoOferecido.getTempoAtendimentoMin();
 		this.nome 					= servicoOferecido.getNome();
-		this.preco 					= servicoOferecido.getPreco();
+		this.usuUltAlteracao        = servicoOferecido.getUsuUltAlteracao();
+		this.dataUltAlteracao       = servicoOferecido.getDataUltAlteracao(); 
+		
+		
 		//this.profissionais          = servicoOferecido.getProfissionais();
 	}
 	
@@ -60,4 +52,12 @@ public class ServicoOferecidoDto {
 		return servicosOferecidos.stream().map(ServicoOferecidoDto::new).collect(Collectors.toList());
 
 }
+
+	public String getUsuUltAlteracao() {
+		return usuUltAlteracao;
+	}
+
+	public void setUsuUltAlteracao(String usuUltAlteracao) {
+		this.usuUltAlteracao = usuUltAlteracao;
+	}
 }
