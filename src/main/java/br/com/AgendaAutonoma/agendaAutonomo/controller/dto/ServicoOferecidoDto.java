@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.Profissional;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
 
 public class ServicoOferecidoDto {

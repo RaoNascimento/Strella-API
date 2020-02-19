@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Especialidade;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
-import lombok.Getter;
-import lombok.Setter;
 
 public class EspecialidadeDto {
 

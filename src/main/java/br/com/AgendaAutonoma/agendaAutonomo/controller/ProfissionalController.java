@@ -1,18 +1,14 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller;
 
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -42,17 +37,17 @@ public class ProfissionalController {
 	ProfissionalService service;
 
 	@Autowired
-	private ProfissionalRepository profissionalRepository;
+	ProfissionalRepository profissionalRepository;
 
 	@GetMapping
-	//@Cacheable(value="listaProfissionais")
-	public Page<ProfissionalDto> lista(@RequestParam(required = false) String nome, 
-		@PageableDefault(sort="nome", direction = Direction.ASC, page = 0, size = 30) Pageable paginacao) {		
+	public List<ProfissionalDto> lista(String nome) {
 		
-		//Pageable paginacao = PageRequest.of(pagina, qtd, Direction.ASC, ordenacao); 
-		Page<Profissional> profissionais = service.listarProfissional(nome, paginacao);
-		
-		return ProfissionalDto.converter(profissionais); 	
+		List<Profissional> profissionais = service.listarProfissional(nome);
+		 ModelMapper mapper = new ModelMapper();
+		 Type proffisionaisType= new TypeToken<List<Profissional>>() {}.getType();
+		 List<ProfissionalDto> profi = mapper.map(profissionais,proffisionaisType);
+		 return profi;
+			
 	}
 	
 	@PostMapping
@@ -69,8 +64,11 @@ public class ProfissionalController {
 	@Transactional
 	public ResponseEntity<ProfissionalDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizaProfissionaisForm form ){		
 		Profissional profissional = service.atualizarProfissional(id, form);
-
-		return ResponseEntity.ok(new ProfissionalDto(profissional));		
+		
+		 ModelMapper mapper = new ModelMapper();
+		 ProfissionalDto profissionalDto = mapper.map(profissional, ProfissionalDto.class);
+		//return ResponseEntity.ok(new ProfissionalDto(profissional));
+		 return ResponseEntity.ok(profissionalDto);
 	}
 	
 	@DeleteMapping("/{id}")

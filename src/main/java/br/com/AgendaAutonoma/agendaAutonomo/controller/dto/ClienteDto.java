@@ -2,7 +2,6 @@ package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,14 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Cliente;
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.Profissional;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
 
 public class ClienteDto {
 	

@@ -2,7 +2,6 @@ package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,11 +12,25 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.Transient;
-
 @Entity
-@Table(name = "Especialidade")
+@Table(name = "especialidade")
 public class Especialidade implements Serializable {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private Long id;
+	@Column(name = "nomeEspecialidade")
+	private String nomeEspecialidade;
+	@Column(name = "tempoAtendimentoMin")
+	private int tempoAtendimentoMin;
+	@Column(name = "usuUltAlteracao")
+	private String usuUltAlteracao;
+	@Column(name = "dataAtualizacao")
+	private LocalDate dataUltAlteracao;
+	
+	@ManyToOne(cascade = CascadeType.ALL)	
+	ServicoOferecido servicoOferecido;
 
 	public String getNomeEspecialidade() {
 		return nomeEspecialidade;
@@ -37,22 +50,7 @@ public class Especialidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
-	private Long id;
-	@Column(name = "nomeEspecialidade", nullable = false)
-	private String nomeEspecialidade;
-	@Column(name = "tempoAtendimentoMin")
-	private int tempoAtendimentoMin;
-	@Column(name = "usuUltAlteracao")
-	private String usuUltAlteracao;
-	@Column(name = "dataAtualizacao")
-	private LocalDate dataUltAlteracao;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	
-	ServicoOferecido servicoOferecido;
 	
 	@Override	
 	public int hashCode() {

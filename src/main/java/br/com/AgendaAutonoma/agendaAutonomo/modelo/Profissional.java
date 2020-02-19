@@ -2,12 +2,26 @@ package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name="Profissional")
 public class Profissional implements Serializable  {
@@ -35,68 +49,121 @@ public class Profissional implements Serializable  {
 	 joinColumns = { @JoinColumn(name = "profissional_id")}, 
 	 inverseJoinColumns = {@JoinColumn(name = "servicoOferecido_id")})  
 	private List<ServicoOferecido>servicosOferecidos;
+	 
+		public Long getId() {
+			return id;
+		}
 	
-	public Long getId() {
-		return id;
+		
+		public String getNome() {
+			return nome;
+		}
+
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+
+
+		public String getTelefone() {
+			return telefone;
+		}
+
+
+		public void setTelefone(String telefone) {
+			this.telefone = telefone;
+		}
+
+
+		public String getEmail() {
+			return email;
+		}
+
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+
+		public String getNumeroConselho() {
+			return numeroConselho;
+		}
+
+
+		public void setNumeroConselho(String numeroConselho) {
+			this.numeroConselho = numeroConselho;
+		}
+
+
+		public String getCargo() {
+			return cargo;
+		}
+
+
+		public void setCargo(String cargo) {
+			this.cargo = cargo;
+		}
+
+
+		public String getNomeComercial() {
+			return nomeComercial;
+		}
+
+
+		public void setNomeComercial(String nomeComercial) {
+			this.nomeComercial = nomeComercial;
+		}
+
+
+		public List<ServicoOferecido> getServicosOferecidos() {
+			return servicosOferecidos;
+		}
+
+
+		public void setServicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
+			this.servicosOferecidos = servicosOferecidos;
+		}
+
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+
+		public Profissional nome(String nome) {
+		    this.nome = nome;
+		    return this;
+	  } 
+	  public Profissional nomeComercial(String nomeComercial) {
+		    this.nomeComercial = nomeComercial;
+		    return this;
+	  }    
+
+	  public Profissional cargo(String cargo) {
+		  this.cargo = cargo;
+		    return this;
 	}
+	  public Profissional telefone(String telefone) {
+		  this.telefone = telefone;
+		    return this;
+	}
+	  public Profissional email(String email) {
+		  this.email = email;
+		    return this;
+	}
+	  public Profissional numConselho(String numeroConselho) {
+		  this.numeroConselho = numeroConselho;
+		    return this;
+	}
+	 
+	  public Profissional servicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
+		  this.servicosOferecidos = servicosOferecidos;
+		    return this;
+	}
+		    
+	 
+	 
 	
-	public List<ServicoOferecido> getServicosOferecidos() {
-		return servicosOferecidos;
-	}
-
-	public void setServicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
-		this.servicosOferecidos = servicosOferecidos;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getNumeroConselho() {
-		return numeroConselho;
-	}
-
-	public void setNumeroConselho(String numeroConselho) {
-		this.numeroConselho = numeroConselho;
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
-
-	public String getNomeComercial() {
-		return nomeComercial;
-	}
-
-	public void setNomeComercial(String nomeComercial) {
-		this.nomeComercial = nomeComercial;
-	}
-	
-
 	@Override
 
 	public int hashCode() {
@@ -155,8 +222,6 @@ public class Profissional implements Serializable  {
         ",\"nomeComercial\":\"" + nomeComercial + "\"" +
         "}";
     }
-
-
 
 
 }

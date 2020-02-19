@@ -1,7 +1,9 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller.form;
 
-import lombok.AllArgsConstructor;
-@AllArgsConstructor
+import java.util.List;
+
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.Profissional;
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
 
 public class ProfissionaisForm {
 	private String nome;

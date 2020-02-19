@@ -42,7 +42,7 @@ public class ServicoOferecido implements Serializable {
 	@OneToMany(mappedBy = "servicoOferecido", cascade = CascadeType.ALL)
 	@Transient
 	private List<Especialidade> especialidades;
-
+	
 	public List<Especialidade> getEspecialidades() {
 		return especialidades;
 	}

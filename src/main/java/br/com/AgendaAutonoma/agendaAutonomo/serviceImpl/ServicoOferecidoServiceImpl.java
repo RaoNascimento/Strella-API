@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.AgendaAutonoma.agendaAutonomo.controller.dto.ServicoEspecialidadeDto;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
 import br.com.AgendaAutonoma.agendaAutonomo.repository.ServicoOferecidoRepository;
 import br.com.AgendaAutonoma.agendaAutonomo.service.ServicoOferecidoService;
@@ -26,6 +27,12 @@ public class ServicoOferecidoServiceImpl implements ServicoOferecidoService {
 			return servicosOferecidos;
 
 		}
+	}
+	@Override
+	public List<ServicoEspecialidadeDto> buscarServicoEspecialidadeById(Long id) {
+		 List<ServicoEspecialidadeDto> servicosOferecidos =  servicoOferecidoRepository.findServicoEspecialidadeByIdAsDto(id);
+				
+		return servicosOferecidos;
 	}
 
 }
