@@ -6,16 +6,17 @@ import java.util.stream.Collectors;
 public class ServicoEspecialidadeDto {
 	
 	private Long id;
-	private String nome;
+	private String nomeServico;
 	private String nomeEspecialidade;
 	private int tempoAtendimentoMin;
 	
 	
-	public String getNome() {
-		return nome;
+	
+	public String getNomeServico() {
+		return nomeServico;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeServico(String nomeServico) {
+		this.nomeServico = nomeServico;
 	}
 	public String getNomeEspecialidade() {
 		return nomeEspecialidade;
@@ -31,17 +32,17 @@ public class ServicoEspecialidadeDto {
 	}
 	public ServicoEspecialidadeDto(ServicoEspecialidadeDto servicoespecialidades) { //construtor - Eu passo as informações ele preenche e retorna ainfo deste Dto
 		this.id = servicoespecialidades.getId();
-		this.nome = servicoespecialidades.getNome();
+		this.nomeServico = servicoespecialidades.getNomeServico();
 		this.nomeEspecialidade = servicoespecialidades.getNomeEspecialidade();
 		this.tempoAtendimentoMin = servicoespecialidades.getTempoAtendimentoMin();
 		
 	}
 	
 	
-	public ServicoEspecialidadeDto(String nomeEspecialidade, int tempoAtendimentoMin, String nome, Long id) {
+	public ServicoEspecialidadeDto(String nomeEspecialidade, int tempoAtendimentoMin, String nomeServico, Long id) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.nomeServico = nomeServico;
 		this.nomeEspecialidade = nomeEspecialidade;
 		this.tempoAtendimentoMin = tempoAtendimentoMin;
 	}

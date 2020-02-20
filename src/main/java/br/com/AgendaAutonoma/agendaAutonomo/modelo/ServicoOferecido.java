@@ -2,7 +2,6 @@ package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,49 +9,42 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 @Entity
-@Table(name = "servicoOferecido")
+@Table(name = "Servico_oferecido")
 public class ServicoOferecido implements Serializable {
+	
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "nome")
-	private String nome;
-	@Column(name = "usuUltAlteracao")
+	@Column(name = "nome_servico")
+	private String nomeServico;
+	@Column(name = "usu_ult_alteracao")
 	private String usuUltAlteracao;
-	@Column(name = "dataAtualizacao")
-	private LocalDate dataUltAlteracao;
-
-	public LocalDate getDataUltAlteracao() {
-		return dataUltAlteracao;
-	}
-
-	public void setDataUltAlteracao(LocalDate dataUltAlteracao) {
-		this.dataUltAlteracao = LocalDate.now();
-	}
-
-	@OneToMany(mappedBy = "servicoOferecido", cascade = CascadeType.ALL)
-	@Transient
-	private List<Especialidade> especialidades;
 	
-	public List<Especialidade> getEspecialidades() {
-		return especialidades;
+	@Column(name = "data_atualizacao")
+	private LocalDate dataUltAlteracao;
+	@Column(name = "tempo_atendimento_min")
+	private int tempoAtendimentoMin;
+
+	@ManyToOne(cascade = CascadeType.ALL)	
+	Especialidade especialidade;
+	
+	public String getNomeServico() {
+		return nomeServico;
 	}
 
-	public void setEspecialidades(List<Especialidade> especialidades) {
-		this.especialidades = especialidades;
-	}
-
-	public Long getId() {
-		return id;
+	public void setNomeServico(String nomeServico) {
+		this.nomeServico = nomeServico;
 	}
 
 	public String getUsuUltAlteracao() {
@@ -63,65 +55,106 @@ public class ServicoOferecido implements Serializable {
 		this.usuUltAlteracao = usuUltAlteracao;
 	}
 
+	public LocalDate getDataUltAlteracao() {
+		return dataUltAlteracao;
+	}
+
+	public void setDataUltAlteracao(LocalDate dataUltAlteracao) {
+		this.dataUltAlteracao = dataUltAlteracao;
+	}
+
+	public int getTempoAtendimentoMin() {
+		return tempoAtendimentoMin;
+	}
+
+	public void setTempoAtendimentoMin(int tempoAtendimentoMin) {
+		this.tempoAtendimentoMin = tempoAtendimentoMin;
+	}
+
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+	}
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override	
+	public int hashCode() {
+
+	final int prime = 31;
+
+	int result = 1;
+
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+
+	return result;
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	
-
-	@Override
-
-	public int hashCode() {
-
-		final int prime = 31;
-
-		int result = 1;
-
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-
-		return result;
-
-	}
-
 	@Override
 
 	public boolean equals(Object obj) {
 
-		if (this == obj)
+	if (this == obj)
 
-			return true;
+	return true;
 
-		if (obj == null)
+	if (obj == null)
 
-			return false;
+	return false;
 
-		if (getClass() != obj.getClass())
+	if (getClass() != obj.getClass())
 
-			return false;
 
-		final ServicoOferecido other = (ServicoOferecido) obj;
+	return false;
 
-		if (id == null) {
+	final ServicoOferecido other = (ServicoOferecido) obj;
 
-			if (other.id != null)
+	if (id == null) {
 
-				return false;
+	if (other.id != null)
 
-		} else if (!id.equals(other.id))
+	return false;
 
-			return false;
+	} else if (!id.equals(other.id))
 
-		return true;
+	return false;
+
+	return true;
 
 	}
+
+
 
 }

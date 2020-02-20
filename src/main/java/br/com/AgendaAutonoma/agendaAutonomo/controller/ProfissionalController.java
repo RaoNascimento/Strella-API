@@ -33,7 +33,6 @@ import br.com.AgendaAutonoma.agendaAutonomo.service.ProfissionalService;
 public class ProfissionalController {
 
 	@Autowired
-	//private UsuarioRepository usuarioRepository;
 	ProfissionalService service;
 
 	@Autowired
@@ -44,16 +43,14 @@ public class ProfissionalController {
 		
 		List<Profissional> profissionais = service.listarProfissional(nome);
 		 ModelMapper mapper = new ModelMapper();
-		 Type proffisionaisType= new TypeToken<List<Profissional>>() {}.getType();
-		 List<ProfissionalDto> profi = mapper.map(profissionais,proffisionaisType);
-		 return profi;
+		 Type profisionaisType= new TypeToken<List<Profissional>>() {}.getType();
+		 List<ProfissionalDto> profissionaisDto = mapper.map(profissionais,profisionaisType);
+		 return profissionaisDto;
 			
 	}
 	
 	@PostMapping
-	//@CacheEvict(value="listaProfissionais", allEntries = true)
-	public ResponseEntity<Profissional> cadastrar(@RequestBody ProfissionaisForm  form, UriComponentsBuilder UriBuilder) {
-		
+	public ResponseEntity<Profissional> cadastrar(@RequestBody ProfissionaisForm  form, UriComponentsBuilder UriBuilder) {	
 		Profissional profissional = service.salvarProfissional(form);	
 		 URI uri = UriBuilder.path("/profissionais/{id}").buildAndExpand(profissional.getId()).toUri(); 
 		 
@@ -63,11 +60,10 @@ public class ProfissionalController {
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<ProfissionalDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizaProfissionaisForm form ){		
-		Profissional profissional = service.atualizarProfissional(id, form);
-		
+		Profissional profissional = service.atualizarProfissional(id, form);	
 		 ModelMapper mapper = new ModelMapper();
 		 ProfissionalDto profissionalDto = mapper.map(profissional, ProfissionalDto.class);
-		//return ResponseEntity.ok(new ProfissionalDto(profissional));
+
 		 return ResponseEntity.ok(profissionalDto);
 	}
 	

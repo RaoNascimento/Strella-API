@@ -1,7 +1,10 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +22,18 @@ public class ClienteController {
 	ClienteService service;
 	@Autowired
 	ClienteRepository clienteRepository;
-	
+
 	@GetMapping
-	public List<ClienteDto>lista(String nome){
-		
-			List<Cliente> clientes = service.listarCliente(nome);
-			
-			return ClienteDto.converter(clientes);
-				
-		
+	public List<ClienteDto> lista(String nome) {
+
+		List<Cliente> clientes = service.listarCliente(nome);
+
+		ModelMapper mapper = new ModelMapper();
+		Type profisionaisType = new TypeToken<List<Cliente>>() {
+		}.getType();
+		List<ClienteDto> clientesDto = mapper.map(clientes, profisionaisType);
+		return clientesDto;
+
 	}
-	
-	
+
 }

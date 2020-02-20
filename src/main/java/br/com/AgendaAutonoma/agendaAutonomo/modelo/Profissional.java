@@ -2,7 +2,6 @@ package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -45,10 +44,10 @@ public class Profissional implements Serializable  {
 	private String nomeComercial;
 	
 	 @ManyToMany(cascade = CascadeType.ALL)
-	 @JoinTable(name="profissional_servico",
+	 @JoinTable(name="profissional_especialidade",
 	 joinColumns = { @JoinColumn(name = "profissional_id")}, 
-	 inverseJoinColumns = {@JoinColumn(name = "servicoOferecido_id")})  
-	private List<ServicoOferecido>servicosOferecidos;
+	 inverseJoinColumns = {@JoinColumn(name = "especialidade_id")})  
+	private List<Especialidade>especialidades;
 	 
 		public Long getId() {
 			return id;
@@ -115,13 +114,13 @@ public class Profissional implements Serializable  {
 		}
 
 
-		public List<ServicoOferecido> getServicosOferecidos() {
-			return servicosOferecidos;
+		public List<Especialidade> getEspecialidades() {
+			return especialidades;
 		}
 
 
-		public void setServicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
-			this.servicosOferecidos = servicosOferecidos;
+		public void setEspecialidades(List<Especialidade> especialidades) {
+			this.especialidades =especialidades;
 		}
 
 
@@ -156,8 +155,8 @@ public class Profissional implements Serializable  {
 		    return this;
 	}
 	 
-	  public Profissional servicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
-		  this.servicosOferecidos = servicosOferecidos;
+	  public Profissional servicosOferecidos(List<Especialidade> servicosOferecidos) {
+		  this.especialidades = servicosOferecidos;
 		    return this;
 	}
 		    

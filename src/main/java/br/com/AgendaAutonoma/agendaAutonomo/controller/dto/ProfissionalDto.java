@@ -2,10 +2,7 @@ package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.Profissional;
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.Especialidade;
 
 public class ProfissionalDto {
 
@@ -15,24 +12,9 @@ public class ProfissionalDto {
 	private String email;
 	private String cargo;
 	private String nomeComercial;
-	//private Usuario usuario = new Usuario();
 	private String numeroConselho;
-	private List<ServicoOferecido>servicosOferecidos;
-	
-	/*
-	public ProfissionalDto(Profissional profissional) { //construtor - Eu passo as informações ele preenche e retorna ainfo deste Dto
-		this.id = profissional.getId();
-		this.nome = profissional.getNome();
-		this.cargo = profissional.getCargo();
-		this.telefone = profissional.getTelefone();
-		this.email = profissional.getEmail();
-		this.numeroConselho = profissional.getNumeroConselho();
-		this.nomeComercial = profissional.getNomeComercial();
-		this.servicosOferecidos = profissional.getServicosOferecidos();
+	private List<Especialidade>especialidades;
 		
-	}
-*/
-	
 	public Long getId() {
 		return id;
 	}
@@ -80,15 +62,6 @@ public class ProfissionalDto {
 		this.telefone = telefone;
 	}
 
-/*
-	public static Page<ProfissionalDto> converter(Page<Profissional> profissionais) { //Passo a lista de tópico e me retorna tópicos dto conversao
-		return profissionais.map(ProfissionalDto::new);
-		
-		// topicos com stream java 8 recebe topicos da classe Topico e retorna o dto
-		//o map faz a busca de cada atributo, o Topico::new instanciando (Chama o construtor) os objetos do Dto
-	}
-*/
-
 	public String getNumeroConselho() {
 		return numeroConselho;
 	}
@@ -109,13 +82,13 @@ public class ProfissionalDto {
 	}
 
 
-	public List<ServicoOferecido> getServicosOferecidos() {
-		return servicosOferecidos;
+	public List<Especialidade> getEspecialidades() {
+		return especialidades;
 	}
 
 
-	public void setServicosOferecidos(List<ServicoOferecido> servicosOferecidos) {
-		this.servicosOferecidos = servicosOferecidos;
+	public void setEspecialidades(List<Especialidade> especialidades) {
+		this.especialidades = especialidades;
 	}
 
 	

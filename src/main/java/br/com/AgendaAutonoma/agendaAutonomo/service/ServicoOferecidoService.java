@@ -9,7 +9,6 @@ public interface ServicoOferecidoService {
 
 	List<ServicoOferecido> listarServicosOferecidos(String nome);
 
-	List<ServicoEspecialidadeDto> buscarServicoEspecialidadeById(Long id);
 
 
 }

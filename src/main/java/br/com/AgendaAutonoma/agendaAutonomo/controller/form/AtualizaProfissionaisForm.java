@@ -3,7 +3,7 @@ package br.com.AgendaAutonoma.agendaAutonomo.controller.form;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.ServicoOferecido;
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.Especialidade;
 
 public class AtualizaProfissionaisForm {
 	
@@ -13,7 +13,7 @@ public class AtualizaProfissionaisForm {
 	private String numeroConselho;
 	private String cargo;
 	private String nomeComercial;
-	private List<ServicoOferecido>servicos = new ArrayList<>();
+	private List<Especialidade>especialidades = new ArrayList<>();
 	
 	public String getNome() {
 		return nome;
@@ -73,13 +73,13 @@ public class AtualizaProfissionaisForm {
 	}
 	
 
-	public List<ServicoOferecido> getServicos() {
-		return servicos;
+	public List<Especialidade> getServicos() {
+		return especialidades;
 	}
 
 
-	public void setServicos(List<ServicoOferecido> servicos) {
-		this.servicos = servicos;
+	public void setServicos(List<Especialidade> servicos) {
+		this.especialidades = servicos;
 	}
 	
 

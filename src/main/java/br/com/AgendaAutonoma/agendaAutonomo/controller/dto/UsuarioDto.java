@@ -14,17 +14,6 @@ public class UsuarioDto {
 	
 	private String  idFacebook;
 	
-	
-	public UsuarioDto(UsuarioDto usuario) {
-		this.id = usuario.getId();
-		this.usuario = usuario.getUsuario();
-		this.senha = usuario.getSenha();
-		this.perfil = usuario.getPerfil();
-		this.idGoogle = usuario.getIdGoogle();
-		this.idFacebook = usuario.getIdFacebook();
-		
-	}
-
 	public Long getId() {
 		return id;
 	}

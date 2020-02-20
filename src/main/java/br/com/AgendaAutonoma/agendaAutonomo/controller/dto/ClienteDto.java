@@ -2,13 +2,8 @@ package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.Cliente;
 
 
 public class ClienteDto {
@@ -23,7 +18,6 @@ public class ClienteDto {
 	
 	private LocalDate dataNascimento;
 	
-	@JsonProperty(value="dataUltAtualizacao")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDateTime dataUltatualizacao = LocalDateTime.now();
 
@@ -75,20 +69,4 @@ public class ClienteDto {
 		this.dataUltatualizacao = dataUltatualizacao;
 	}
 
-	public ClienteDto(Cliente cliente) {
-		this.id = cliente.getId();
-		this.email = cliente.getEmail();
-		this.telefone = cliente.getTelefone();
-		this.nome = cliente.getNome();
-		this.dataNascimento = cliente.getDataNascimento();
-		this.dataUltatualizacao = cliente.getDataUltatualizacao();
-	}
-
-	public static List<ClienteDto> converter(List<Cliente> clientes){
-		return clientes.stream().map(ClienteDto::new).collect(Collectors.toList());
-		
-	}
-	
-	//public static List<ProfissionalDto> converter(List<Profissional> profissionais) { //Passo a lista de tópico e me retorna tópicos dto conversao
-		//return profissionais.stream().map(ProfissionalDto::new).collect(Collectors.toList());
 }
