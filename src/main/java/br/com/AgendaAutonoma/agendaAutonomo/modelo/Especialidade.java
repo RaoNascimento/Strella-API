@@ -26,7 +26,7 @@ public class Especialidade implements Serializable {
 	@Column(name = "usuUltAlteracao")
 	private String usuUltAlteracao;
 	@Column(name = "dataAtualizacao")
-	private LocalDate dataUltAlteracao;
+	private LocalDate dataUltAlteracao = LocalDate.now();
 	
 	
 	public Long getId() {
@@ -46,11 +46,7 @@ public class Especialidade implements Serializable {
 	}
 
 	public LocalDate getDataUltAlteracao() {
-		return dataUltAlteracao;
-	}
-
-	public void setDataUltAlteracao(LocalDate dataUltAlteracao) {
-		this.dataUltAlteracao = dataUltAlteracao;
+		return  java.time.LocalDate.now(); 
 	}
 
 	public String getUsuUltAlteracao() {
@@ -61,7 +57,33 @@ public class Especialidade implements Serializable {
 		this.usuUltAlteracao = usuUltAlteracao;
 	}
 
-
+	public Especialidade nomeEspecialidade(String nomeEspecialidade) {
+	
+		this.nomeEspecialidade = nomeEspecialidade;
+		return this;
+	}
+	public Especialidade dataUltAlteracao(LocalDate dataUltAlteracao) {
+		
+		this.dataUltAlteracao =  dataUltAlteracao;
+		return this;
+	}
+	public Especialidade usuUltAlteracao(String usuUltAlteracao) {
+		
+		this.usuUltAlteracao = usuUltAlteracao;
+		return this;
+	}
+	public Especialidade id(Long id) {
+		this.id = id;
+		return this;
+	}
+	/*
+	private String getDateTime() { 
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+		Date date = new Date(); 
+		return dateFormat.format(date); 
+	}
+	*/
+	
 
 	@Override
 

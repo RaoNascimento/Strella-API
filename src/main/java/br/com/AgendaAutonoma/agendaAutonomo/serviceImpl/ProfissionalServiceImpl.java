@@ -25,22 +25,8 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 	UsuarioRepository usuarioRepository;
 	Profissional profissional;
 	
-	//@Autowired(required=true)
-	 //ProfissionaisMapper profissionaisMappper;
-	
 	public Profissional salvarProfissional(ProfissionaisForm form) {
 		
-		
-		//profissionaisMappper.toModel(form);
-		/*
-		profissional.setNome(form.getNome());
-		profissional.setEmail(form.getEmail());
-		profissional.setCargo(form.getCargo());
-		profissional.setNumeroConselho(form.getNumeroConselho());
-		profissional.setTelefone(form.getTelefone());
-		profissional.setNomeComercial(form.getNomeComercial());	
-		*/
-		//profissional = profissionalRepository.save(form.toObject());
 		ModelMapper mapper = new ModelMapper();
 		profissional= mapper.map(form, Profissional.class);
 		profissional = profissionalRepository.save(profissional);
@@ -57,15 +43,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 			profissional.telefone(form.getTelefone());
 			profissional.nomeComercial(form.getNomeComercial());
 			profissional.numConselho(form.getNumeroConselho());
-		/*
-		
-			profissional.setNome(form.getNome());
-			profissional.setCargo(form.getCargo());
-			profissional.setEmail(form.getEmail());
-			profissional.setTelefone(form.getTelefone());
-			profissional.setNomeComercial(form.getNomeComercial());
-			profissional.setNumeroConselho(form.getNumeroConselho());
-		*/
+	
 		return profissional;
 	}
 	

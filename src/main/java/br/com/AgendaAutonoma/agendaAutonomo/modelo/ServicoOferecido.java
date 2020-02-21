@@ -30,9 +30,8 @@ public class ServicoOferecido implements Serializable {
 	private String nomeServico;
 	@Column(name = "usu_ult_alteracao")
 	private String usuUltAlteracao;
-	
 	@Column(name = "data_atualizacao")
-	private LocalDate dataUltAlteracao;
+	private LocalDate dataUltAlteracao = LocalDate.now();
 	@Column(name = "tempo_atendimento_min")
 	private int tempoAtendimentoMin;
 
