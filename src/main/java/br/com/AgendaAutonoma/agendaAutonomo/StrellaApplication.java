@@ -5,10 +5,10 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @SpringBootApplication
 @EnableSpringDataWebSupport 
-public class AgendaApplication {
+public class StrellaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AgendaApplication.class, args);
+		SpringApplication.run(StrellaApplication.class, args);
 	}
 
 }

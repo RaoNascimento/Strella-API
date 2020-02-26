@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.AgendaAutonoma</groupId>
-	<artifactId>Agenda</artifactId>
+	<artifactId>Strella-Api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AgendaAutonomo</name>
 	<description>Demo project for Spring Boot</description>
