@@ -29,8 +29,7 @@ public class ClienteController {
 		List<Cliente> clientes = service.listarCliente(nome);
 
 		ModelMapper mapper = new ModelMapper();
-		Type profisionaisType = new TypeToken<List<Cliente>>() {
-		}.getType();
+		Type profisionaisType = new TypeToken<List<Cliente>>() {}.getType();
 		List<ClienteDto> clientesDto = mapper.map(clientes, profisionaisType);
 		return clientesDto;
 
