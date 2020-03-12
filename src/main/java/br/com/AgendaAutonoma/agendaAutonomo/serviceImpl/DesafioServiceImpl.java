@@ -28,9 +28,7 @@ public class DesafioServiceImpl implements DesafioService {
 
 		try {
 		UriComponents uri = UriComponentsBuilder.newInstance().scheme("https")
-				.host(URL+TOKEN).build();
-		
-			entidadeCifraModelo = template.getForEntity(uri.toUriString(), CifraModelo.class);
+				.host(URL+TOKEN).build();	
 			entidadeCifraModelo = template.getForEntity(uri.toUriString(), CifraModelo.class);
 			
 		}catch(ResourceAccessException e) {
