@@ -1,7 +1,5 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller;
 
-import java.security.NoSuchAlgorithmException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.CifraModelo;
-import br.com.AgendaAutonoma.agendaAutonomo.modelo.DecifradorCesar;
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.DecifraTexto;
+import br.com.AgendaAutonoma.agendaAutonomo.modelo.GravarArquivoJson;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.ResumoSHA1;
 import br.com.AgendaAutonoma.agendaAutonomo.service.DesafioService;
 
@@ -21,42 +20,37 @@ public class DesafioController {
 
 	@Autowired
 	DesafioService desafioService;
+	
+	static String ERRO_RESUMO = "Não foi possível gerar resumo do texto " ;
 
 	@Bean
 	public RestTemplate rest() {
 		return new RestTemplate();
 	}
 
-	
-	public ResponseEntity<CifraModelo> consultaTextoCifrado() {
-
-
-		ResponseEntity<CifraModelo> entity = desafioService.getTextoCodificadoApi();
-		DecifradorCesar decifradorCesar = new DecifradorCesar();
-		entity.getBody().setDecifrado(decifradorCesar.decifrarCesar(entity.getBody().getCifrado()));
-		entity.getBody().setNumeroCasas(decifradorCesar.contadorCasas());
-
-		return ResponseEntity.ok(entity.getBody());
-	}
-	
 	@GetMapping
-	public ResponseEntity<CifraModelo> buscarJsonDesafioCodenation() {
+	public ResponseEntity<CifraModelo> decifrarDesafioCodenation() {
+	
 
-		ResponseEntity<CifraModelo> entity = desafioService.getTextoCodificadoApi();
-		DecifradorCesar decifradorCesar = new DecifradorCesar();
+		ResponseEntity<CifraModelo> entidadeCifraModelo = desafioService.getTextoCodificadoApi();
+		DecifraTexto decifraTexto = new DecifraTexto();
 		
-		String textoDecifrado = decifradorCesar.decifrarComCasas(entity.getBody().getCifrado());	
-		entity.getBody().setDecifrado(textoDecifrado);
-		entity.getBody().setNumeroCasas(decifradorCesar.contadorCasas());
+		String textoDecifrado = decifraTexto.decifrarCesar(entidadeCifraModelo.getBody().getCifrado());	
+		entidadeCifraModelo.getBody().setDecifrado(textoDecifrado);
+		entidadeCifraModelo.getBody().setNumeroCasas(decifraTexto.contadorCasas());
 		
 		try {
 			ResumoSHA1 resumo = new ResumoSHA1();
-			entity.getBody().setResumoCriptografico(resumo.resumirTextoDecifrado(textoDecifrado));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			entidadeCifraModelo.getBody().setResumoCriptografico(resumo.resumirTextoDecifrado(textoDecifrado));
+			
+		} catch (Exception e) { 
+			System.out.println(ERRO_RESUMO + e.getMessage().toString());	 
 		}
+		
+		GravarArquivoJson gerarArquivo = new GravarArquivoJson();
+		gerarArquivo.gravarArquivoJson(entidadeCifraModelo.getBody());
 
-		return ResponseEntity.ok(entity.getBody());
+		return ResponseEntity.ok(entidadeCifraModelo.getBody());
 	}
 
 }
