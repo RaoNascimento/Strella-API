@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import br.com.AgendaAutonoma.agendaAutonomo.controller.AtualizaEspecialidadeForm;
 import br.com.AgendaAutonoma.agendaAutonomo.controller.dto.ServicoEspecialidadeDto;
+import br.com.AgendaAutonoma.agendaAutonomo.controller.form.AtualizaEspecialidadeForm;
 import br.com.AgendaAutonoma.agendaAutonomo.controller.form.FormEspecialidade;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Especialidade;
 

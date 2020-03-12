@@ -22,6 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.AgendaAutonoma.agendaAutonomo.controller.dto.EspecialidadeDto;
 import br.com.AgendaAutonoma.agendaAutonomo.controller.dto.ServicoEspecialidadeDto;
+import br.com.AgendaAutonoma.agendaAutonomo.controller.form.AtualizaEspecialidadeForm;
 import br.com.AgendaAutonoma.agendaAutonomo.controller.form.FormEspecialidade;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Especialidade;
 import br.com.AgendaAutonoma.agendaAutonomo.repository.EspecialidadeRepository;

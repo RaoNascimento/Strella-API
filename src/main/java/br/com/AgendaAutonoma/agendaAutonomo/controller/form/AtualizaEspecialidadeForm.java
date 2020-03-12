@@ -1,4 +1,4 @@
-package br.com.AgendaAutonoma.agendaAutonomo.controller;
+package br.com.AgendaAutonoma.agendaAutonomo.controller.form;
 
 import java.time.LocalDate;
 
