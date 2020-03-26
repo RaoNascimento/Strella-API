@@ -15,14 +15,14 @@ public class ServicoEspecialidadeDto {
 	public String getNomeServico() {
 		return nomeServico;
 	}
-	public void setNomeServico(String nomeServico) {
-		this.nomeServico = nomeServico;
+	public String setNomeServico(String nomeServico) {
+		return this.nomeServico = nomeServico;
 	}
 	public String getNomeEspecialidade() {
 		return nomeEspecialidade;
 	}
-	public void setNomeEspecialidade(String nomeEspecialidade) {
-		this.nomeEspecialidade = nomeEspecialidade;
+	public String setNomeEspecialidade(String nomeEspecialidade) {
+		return this.nomeEspecialidade = nomeEspecialidade;
 	}
 	public int getTempoAtendimentoMin() {
 		return tempoAtendimentoMin;

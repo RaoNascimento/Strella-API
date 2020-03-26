@@ -35,7 +35,7 @@ public class ServicoOferecido implements Serializable {
 	@Column(name = "tempo_atendimento_min")
 	private int tempoAtendimentoMin;
 
-	@ManyToOne(cascade = CascadeType.ALL)	
+	@ManyToOne(cascade = CascadeType.MERGE)	
 	Especialidade especialidade;
 	
 	public String getNomeServico() {
@@ -66,10 +66,6 @@ public class ServicoOferecido implements Serializable {
 		return tempoAtendimentoMin;
 	}
 
-	public void setTempoAtendimentoMin(int tempoAtendimentoMin) {
-		this.tempoAtendimentoMin = tempoAtendimentoMin;
-	}
-
 	public Especialidade getEspecialidade() {
 		return especialidade;
 	}
@@ -78,24 +74,26 @@ public class ServicoOferecido implements Serializable {
 		this.especialidade = especialidade;
 	}
 
-
-
-
+	public void setTempoAtendimentoMin(int tempoAtendimentoMin) {
+		this.tempoAtendimentoMin = tempoAtendimentoMin;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public ServicoOferecido nomeServico(String nomeServico) {
+		this.nomeServico = nomeServico;
+		return this;
+	}
+	public ServicoOferecido usuUltAlteracao(String usuUltAlteracao) {
+		this.usuUltAlteracao = usuUltAlteracao;
+		return this;
+	}
+	public ServicoOferecido tempoAtendimentoMin(int tempoAtendimentoMin) {
+		this.tempoAtendimentoMin = tempoAtendimentoMin;
+		return this;
+	}
+	public Especialidade especialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+		return especialidade;
+	}
 	
 	
 	@Override	

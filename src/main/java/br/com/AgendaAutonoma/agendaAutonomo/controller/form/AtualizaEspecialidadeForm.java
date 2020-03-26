@@ -7,6 +7,7 @@ public class AtualizaEspecialidadeForm {
 	private String nomeEspecialidade;
 	private String usuUltAlteracao;
 	private LocalDate dataUltAlteracao;
+	
 	public Long getId() {
 		return id;
 	}

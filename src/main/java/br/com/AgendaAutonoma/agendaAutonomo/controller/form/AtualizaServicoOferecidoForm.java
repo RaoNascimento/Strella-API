@@ -1,16 +1,13 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller.form;
 
 import br.com.AgendaAutonoma.agendaAutonomo.controller.dto.EspecialidadeDto;
-import lombok.Getter;
-import lombok.Setter;
-@Getter
-@Setter
-public class ServicoOferecidoForm {
-	
-	private String nomeServico;
-	//private String usuUltAlteracao;
-	private int tempoAtendimentoMin;
 
+public class AtualizaServicoOferecidoForm {
+	
+	private Long id;
+	private String nomeServico;
+	private String usuUltAlteracao;
+	private int tempoAtendimentoMin;
 	private EspecialidadeDto especialidade = new EspecialidadeDto();
 
 	public String getNomeServico() {
@@ -36,12 +33,22 @@ public class ServicoOferecidoForm {
 	public void setEspecialidade(Long especialidade) {
 		this.especialidade.setId(especialidade);
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUsuUltAlteracao() {
+		return usuUltAlteracao;
+	}
+
+	public void setUsuUltAlteracao(String usuUltAlteracao) {
+		this.usuUltAlteracao = usuUltAlteracao;
+	}
 
 
-
-	
-
-	
-	
 }

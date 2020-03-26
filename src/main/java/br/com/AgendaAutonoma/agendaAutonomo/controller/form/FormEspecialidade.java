@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class FormEspecialidade {
 
-	private String nome;
+	private String nomeEspecialidade;
 	private String usuUltAlteracao;
 	private LocalDate dataUltAlteracao;
 	
@@ -14,12 +14,12 @@ public class FormEspecialidade {
 	}
 
 	
-	public String getNome() {
-		return nome;
+	public String getNomeEspecialidade() {
+		return nomeEspecialidade;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeEspecialidade(String nome) {
+		this.nomeEspecialidade = nome;
 	}
  
 	public String getUsuUltAlteracao() {

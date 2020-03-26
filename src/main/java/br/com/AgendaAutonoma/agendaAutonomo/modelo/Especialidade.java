@@ -33,8 +33,9 @@ public class Especialidade implements Serializable {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public Especialidade setId(Long id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getNomeEspecialidade() {
@@ -76,15 +77,7 @@ public class Especialidade implements Serializable {
 		this.id = id;
 		return this;
 	}
-	/*
-	private String getDateTime() { 
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-		Date date = new Date(); 
-		return dateFormat.format(date); 
-	}
-	*/
 	
-
 	@Override
 
 	public int hashCode() {

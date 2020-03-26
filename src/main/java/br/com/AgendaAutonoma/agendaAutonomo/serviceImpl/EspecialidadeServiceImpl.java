@@ -52,12 +52,13 @@ public class EspecialidadeServiceImpl implements EspecialidadeService {
 	@Override
 	public Especialidade atualizarEspecialidade(Long id, AtualizaEspecialidadeForm form) {
 		
-		ModelMapper mapper = new ModelMapper();
-		Especialidade especialidade = mapper.map(form, Especialidade.class);
-		 especialidade =  especialidadeRepository.getOne(id);
+		 Especialidade especialidade =  especialidadeRepository.getOne(id);
 		 
-			especialidade.nomeEspecialidade(form.getNomeEspecialidade());
-			especialidade.usuUltAlteracao(form.getUsuUltAlteracao());
+		if(!form.getNomeEspecialidade().isEmpty()) { especialidade.nomeEspecialidade(form.getNomeEspecialidade()); }
+			especialidade.nomeEspecialidade(especialidade.getNomeEspecialidade());
+		
+		if(!form.getUsuUltAlteracao().isEmpty())   { especialidade.usuUltAlteracao(form.getUsuUltAlteracao()); }
+			especialidade.usuUltAlteracao(especialidade.getUsuUltAlteracao());
 		
 		return especialidade;
 	}
