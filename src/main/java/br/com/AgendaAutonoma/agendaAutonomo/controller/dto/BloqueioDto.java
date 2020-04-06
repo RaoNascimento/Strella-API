@@ -1,11 +1,10 @@
-package br.com.AgendaAutonoma.agendaAutonomo.controller.form;
+package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
 import java.time.LocalTime;
 
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Agenda;
 
-public class BloqueioForm {
-	
+public class BloqueioDto {
 	private int dia;
 	
 	private LocalTime horaInicio;
@@ -14,10 +13,10 @@ public class BloqueioForm {
 	
 	private String motivo;
 	
-	private Agenda agenda = new Agenda();
+	private Agenda agenda  = new Agenda();
 	
 	private Long id;
-
+	
 	public int getDia() {
 		return dia;
 	}
@@ -54,8 +53,8 @@ public class BloqueioForm {
 		return agenda;
 	}
 
-	public void setAgenda(Long agenda) {
-		this.agenda.setId(agenda);
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
 	}
 
 	public Long getId() {
@@ -65,5 +64,7 @@ public class BloqueioForm {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
 
 }

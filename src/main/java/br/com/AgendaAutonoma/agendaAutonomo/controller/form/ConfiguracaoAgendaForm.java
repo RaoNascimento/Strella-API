@@ -14,6 +14,16 @@ public class ConfiguracaoAgendaForm {
 	
 	private int ativo;
 	
+	private int diaSemana;
+	
+	public int getDiaSemana() {
+		return diaSemana;
+	}
+
+	public void setDiaSemana(int diaSemana) {
+		this.diaSemana = diaSemana;
+	}
+
 	public LocalTime getHoraInicioExp() {
 		return horaInicioExp;
 	}

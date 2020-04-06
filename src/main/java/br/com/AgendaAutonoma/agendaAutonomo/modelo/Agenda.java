@@ -1,13 +1,15 @@
 package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +24,8 @@ public class Agenda {
 	@Column(name="dataUltAlteracao")
 	private LocalDate dataUltAlteracao= LocalDate.now();
 	
-
-	@OneToOne(cascade = CascadeType.MERGE)
-	private ConfiguracaoAgenda configuracaoAgenda;
+	@OneToMany(cascade = CascadeType.MERGE)
+	private List<ConfiguracaoAgenda>configuracaoAgenda;
 	
 	public Long getId() {
 		return id;
@@ -47,12 +48,12 @@ public class Agenda {
 	}
 
 
-	public ConfiguracaoAgenda getConfiguracaoAgenda() {
+	public List<ConfiguracaoAgenda> getConfiguracaoAgenda() {
 		return configuracaoAgenda;
 	}
 
 
-	public void setConfiguracaoAgenda(ConfiguracaoAgenda configuracaoAgenda) {
+	public void setConfiguracaoAgenda(List<ConfiguracaoAgenda> configuracaoAgenda) {
 		this.configuracaoAgenda = configuracaoAgenda;
 	}
 

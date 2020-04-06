@@ -1,18 +1,22 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AgendaDto {
 	
 	private Long id;
 	
-private ConfiguracaoAgendaDto configuracaoAgenda = new ConfiguracaoAgendaDto();
+private  List<ConfiguracaoAgendaDto> configuracaoAgenda = new ArrayList<ConfiguracaoAgendaDto>();
 	
-	public ConfiguracaoAgendaDto getConfiguracaoAgenda() {
-		return configuracaoAgenda;
-	}
+public List<ConfiguracaoAgendaDto> getConfiguracaoAgenda() {
+	return configuracaoAgenda;
+}
 
-	public void setConfiguracaoAgenda(Long configuracaoAgenda) {
-		this.configuracaoAgenda.setId(configuracaoAgenda);
-	}
+
+public void setConfiguracaoAgenda(List<ConfiguracaoAgendaDto> configuracaoAgenda) {
+	this.configuracaoAgenda = configuracaoAgenda;
+}
 
 	public Long getId() {
 		return id;

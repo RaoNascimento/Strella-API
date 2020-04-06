@@ -29,16 +29,28 @@ public class ConfiguracaoAgenda {
 	
 	@Column(name = "horaFimPausa")
 	private LocalTime horaFimPausa;
+	
 	@Column(name = "ativo")
 	private int ativo;
+	
+	@Column(name = "diaSemana")
+	private int diaSemana;
+
+	public int getDiaSemana() {
+		return diaSemana;
+	}
+
+	public void setDiaSemana(int diaSemana) {
+		this.diaSemana = diaSemana;
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public ConfiguracaoAgenda setId(Long id) {
+	public Long setId(Long id) {
 		this.id = id;
-		return this;
+		return id;
 	}
 
 	public LocalTime getHoraInicioExp() {

@@ -1,5 +1,7 @@
 package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
+import java.time.LocalTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,15 +17,19 @@ public class BloqueioAgenda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
+	public LocalTime getHoraInicio() {
+		return horaInicio;
+	}
+	
 	@Column(name = "dia")
 	private int dia;
 	@Column(name = "horainicio")
-	private int horaInicio;
+	private LocalTime horaInicio;
 	@Column(name = "horaFim")
-	private int horaFim;
+	private LocalTime horaFim;
 	@Column(name = "motivo")
 	private String motivo;
-	@ManyToOne(cascade = CascadeType.ALL)	
+	@ManyToOne(cascade = CascadeType.MERGE)	
 	private Agenda agenda;
 
 	public Long getId() {
@@ -32,24 +38,22 @@ public class BloqueioAgenda {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public void setHoraInicio(LocalTime horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+	public LocalTime getHoraFim() {
+		return horaFim;
+	}
+	public void setHoraFim(LocalTime horaFim) {
+		this.horaFim = horaFim;
+	}
 	public int getDia() {
 		return dia;
 	}
 	public void setDia(int dia) {
 		this.dia = dia;
 	}
-	public int getHoraInicio() {
-		return horaInicio;
-	}
-	public void setHoraInicio(int horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-	public int getHoraFim() {
-		return horaFim;
-	}
-	public void setHoraFim(int horaFim) {
-		this.horaFim = horaFim;
-	}
+
 	public String getMotivo() {
 		return motivo;
 	}
@@ -63,9 +67,5 @@ public class BloqueioAgenda {
 	public void setAgenda(Agenda agenda) {
 		this.agenda = agenda;
 	}
-	
-	
-	
-	
 	
 }
