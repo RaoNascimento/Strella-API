@@ -65,6 +65,11 @@ public class ServicoOferecidoDto {
 	public void setDataUltAlteracao(LocalDate dataUltAlteracao) {
 		this.dataUltAlteracao = dataUltAlteracao;
 	}
+	
+	public void ServicoOferecido(Long id) {
+		this.id = id;
+		
+	}
 
 
 

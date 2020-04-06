@@ -1,14 +1,9 @@
-package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
+package br.com.AgendaAutonoma.agendaAutonomo.controller.form;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-
-public class ClienteDto {
+public class ClienteForm {
 	
-	private Long id;
 
 	private String email;
 	
@@ -18,16 +13,6 @@ public class ClienteDto {
 	
 	private LocalDate dataNascimento;
 	
-	private LocalDateTime dataUltatualizacao;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -60,12 +45,5 @@ public class ClienteDto {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public LocalDateTime getDataUltatualizacao() {
-		return dataUltatualizacao;
-	}
-
-	public void setDataUltatualizacao( LocalDateTime dataUltatualizacao) {
-		this.dataUltatualizacao = dataUltatualizacao;
-	}
 
 }

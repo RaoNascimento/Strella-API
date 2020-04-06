@@ -47,7 +47,7 @@ public class Especialidade implements Serializable {
 	}
 
 	public LocalDate getDataUltAlteracao() {
-		return  java.time.LocalDate.now(); 
+		return  dataUltAlteracao; 
 	}
 
 	public String getUsuUltAlteracao() {

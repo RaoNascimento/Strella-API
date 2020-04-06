@@ -2,6 +2,7 @@ package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -38,6 +40,13 @@ public class ServicoOferecido implements Serializable {
 	@ManyToOne(cascade = CascadeType.MERGE)	
 	Especialidade especialidade;
 	
+	@ManyToMany(mappedBy = "servicosOferecidos")
+	 private List<Agendamento> agendamentos;
+	
+	public ServicoOferecido() {
+		this.id = id;
+	}
+
 	public String getNomeServico() {
 		return nomeServico;
 	}

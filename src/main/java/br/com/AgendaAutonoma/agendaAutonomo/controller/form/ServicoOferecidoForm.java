@@ -36,12 +36,5 @@ public class ServicoOferecidoForm {
 	public void setEspecialidade(Long especialidade) {
 		this.especialidade.setId(especialidade);
 	}
-	
-
-
-
-	
-
-	
-	
+		
 }

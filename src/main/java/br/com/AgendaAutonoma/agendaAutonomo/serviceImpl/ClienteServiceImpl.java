@@ -2,9 +2,11 @@ package br.com.AgendaAutonoma.agendaAutonomo.serviceImpl;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.AgendaAutonoma.agendaAutonomo.controller.form.ClienteForm;
 import br.com.AgendaAutonoma.agendaAutonomo.modelo.Cliente;
 import br.com.AgendaAutonoma.agendaAutonomo.repository.ClienteRepository;
 import br.com.AgendaAutonoma.agendaAutonomo.service.ClienteService;
@@ -29,6 +31,15 @@ public class ClienteServiceImpl implements ClienteService {
 			List<Cliente> clientes = clienteRepository.findByNome(nome);
 			return clientes;	
 	}
+	}
+
+	@Override
+	public Cliente salvarCliente(ClienteForm form) {
+		
+		ModelMapper mapper = new ModelMapper();
+		cliente	= mapper.map(form, Cliente.class);
+		cliente = clienteRepository.save(cliente);
+		return cliente;
 	}
 
 }

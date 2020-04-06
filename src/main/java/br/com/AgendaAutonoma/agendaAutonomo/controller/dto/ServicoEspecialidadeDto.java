@@ -1,10 +1,15 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ServicoEspecialidadeDto {
+public class ServicoEspecialidadeDto  implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String nomeServico;
 	private String nomeEspecialidade;

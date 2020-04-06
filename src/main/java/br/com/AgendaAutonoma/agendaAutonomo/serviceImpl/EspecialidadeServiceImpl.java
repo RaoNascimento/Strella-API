@@ -54,7 +54,11 @@ public class EspecialidadeServiceImpl implements EspecialidadeService {
 		
 		 Especialidade especialidade =  especialidadeRepository.getOne(id);
 		 
-		if(!form.getNomeEspecialidade().isEmpty()) { especialidade.nomeEspecialidade(form.getNomeEspecialidade()); }
+		if(!form.getNomeEspecialidade().isEmpty()) { 
+			
+			especialidade.nomeEspecialidade(form.getNomeEspecialidade()); 
+			
+		}
 			especialidade.nomeEspecialidade(especialidade.getNomeEspecialidade());
 		
 		if(!form.getUsuUltAlteracao().isEmpty())   { especialidade.usuUltAlteracao(form.getUsuUltAlteracao()); }

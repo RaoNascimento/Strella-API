@@ -30,9 +30,7 @@ public class Profissional implements Serializable  {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
-	@Column(name = "nome", nullable = false)
 	private String nome;
-	@Column(name = "telefone", nullable = false)
 	private String telefone;
 	@Column(name = "email")
 	private String email;
@@ -48,6 +46,9 @@ public class Profissional implements Serializable  {
 	 joinColumns = { @JoinColumn(name = "profissional_id")}, 
 	 inverseJoinColumns = {@JoinColumn(name = "especialidade_id")})  
 	private List<Especialidade>especialidades;
+	 
+	 @ManyToMany(mappedBy = "profissionais", cascade = CascadeType.MERGE)
+	 private List<Agendamento> agendamentos;
 	 
 		public Long getId() {
 			return id;

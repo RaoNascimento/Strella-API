@@ -3,12 +3,14 @@ package br.com.AgendaAutonoma.agendaAutonomo.modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -16,21 +18,25 @@ import javax.persistence.Table;
 @Table(name="Cliente")
 public class Cliente  implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "telefone", nullable = false)
+	@Column(name = "telefone")
 	private String telefone;
-	@Column(name = "nome", nullable = false)
+	@Column(name = "nome")
 	private String nome;
-	@Column(name = "dataNascimento", nullable = false)
+	@Column(name = "dataNascimento")
 	private LocalDate dataNascimento;
 	
-	@Column(name = "dataUltAtualizacao", nullable = false)
-	private  LocalDateTime dataUltatualizacao;
+	@Column(name = "dataUltAtualizacao")
+	private  LocalDateTime dataUltatualizacao = LocalDateTime.now();
+	
+	@ManyToMany(mappedBy = "clientes")
+	 private List<Agendamento> agendamentos;
 
 	public Long getId() {
 		return id;
