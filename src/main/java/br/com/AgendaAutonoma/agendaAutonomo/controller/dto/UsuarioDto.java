@@ -1,19 +1,33 @@
 package br.com.AgendaAutonoma.agendaAutonomo.controller.dto;
 
+import java.time.LocalDateTime;
+
 public class UsuarioDto {
 
 	private Long id;
 
-	private String usuario;
+	private String email;
+	
+	private String auth0;
+	
+	private LocalDateTime dataCadastro;
+	
+	public String getEmail() {
+		return email;
+	}
 
-	private String senha;
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-	private Long perfil;
-	
-	private String idGoogle;
-	
-	private String  idFacebook;
-	
+	public String getAuth0() {
+		return auth0;
+	}
+
+	public void setAuth0(String auth0) {
+		this.auth0 = auth0;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -22,44 +36,10 @@ public class UsuarioDto {
 		this.id = id;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public LocalDateTime getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public Long getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Long perfil) {
-		this.perfil = perfil;
-	}
-
-	public String getIdGoogle() {
-		return idGoogle;
-	}
-
-	public void setIdGoogle(String idGoogle) {
-		this.idGoogle = idGoogle;
-	}
-
-	public String getIdFacebook() {
-		return idFacebook;
-	}
-
-	public void setIdFacebook(String idFacebook) {
-		this.idFacebook = idFacebook;
-	}
+	
 
 }

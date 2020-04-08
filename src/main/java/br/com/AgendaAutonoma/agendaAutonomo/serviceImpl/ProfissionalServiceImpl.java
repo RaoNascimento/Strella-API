@@ -28,7 +28,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 	public Profissional salvarProfissional(ProfissionaisForm form) {
 		
 		ModelMapper mapper = new ModelMapper();
-		profissional= mapper.map(form, Profissional.class);
+		profissional = mapper.map(form, Profissional.class);
 		profissional = profissionalRepository.save(profissional);
 		return profissional;
 	}
