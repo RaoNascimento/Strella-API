@@ -25,8 +25,7 @@ public class ServicoOferecidoServiceImpl implements ServicoOferecidoService {
 	@Override
 	public List<ServicoOferecido> listarServicosOferecidos(String nomeServico) {
 		if (nomeServico == null) {
-			List<ServicoOferecido> servicosOferecidos = servicoOferecidoRepository.findAll();
-			return servicosOferecidos;
+			return servicoOferecidoRepository.findAll();
 		} else {
 			List<ServicoOferecido> servicosOferecidos = servicoOferecidoRepository.findByNomeServico(nomeServico);
 			return servicosOferecidos;
